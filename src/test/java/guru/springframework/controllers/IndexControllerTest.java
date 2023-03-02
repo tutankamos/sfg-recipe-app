@@ -19,6 +19,9 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 public class IndexControllerTest {
 
@@ -37,12 +40,12 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void testMockMVC() {
+    public void testMockMVC() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build(); // per costruire il mockMVC
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view)
+                .andExpect(view().name("index"));
     }
 
     @Test
