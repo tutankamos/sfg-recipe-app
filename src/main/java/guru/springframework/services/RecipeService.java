@@ -9,5 +9,5 @@ import java.util.Set;
  */
 public interface RecipeService {
 
-    Set<Recipe> getRecipes();
+    Set<Recipe> getRecipes() throws Exception;
 }

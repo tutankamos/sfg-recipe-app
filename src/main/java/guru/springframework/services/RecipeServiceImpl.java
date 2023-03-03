@@ -22,11 +22,16 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Set<Recipe> getRecipes() {
+    public Set<Recipe> getRecipes() throws Exception {
         log.debug("I'm in the service");
 
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
+
+        if(recipeSet.isEmpty()){
+            throw new Exception("set is empty");
+        }
+
         return recipeSet;
     }
 }
